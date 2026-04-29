@@ -2,7 +2,7 @@
 # Austrian Election Polarization Dataset
 #
 # Constructs a panel dataset of Austrian parliamentary elections
-# (1945–2010) augmented with ideological polarization scores
+# (1950–2010) augmented with ideological polarization scores
 # derived from the Manifesto Project Database (MPDS2025a).
 #
 # Primary sources:
