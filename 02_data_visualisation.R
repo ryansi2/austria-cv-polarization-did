@@ -14,8 +14,6 @@
 # 0. Dependencies
 library(tidyverse)
 library(haven)
-library(fixest)
-library(skimr)
 
 
 # 1. Load Data

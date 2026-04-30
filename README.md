@@ -49,14 +49,14 @@ Raw data are not hosted in this repository due to licensing restrictions.
 
 ## Methodology
 
-**Difference-in-Differences** (`did-models-polarization.R`)  
+**Difference-in-Differences** (`03_analysis_did.R`)  
 Estimates the effect of the 1986 CV implementation in Carinthia and the 1992
 repeal in Styria, Vorarlberg, and Tyrol against never-treated donor states.
 Models vary across narrow and wide estimation windows and four fixed-effect
 structures (two-way, state-only, year-only, none). Standard errors are clustered
 at the state level. Robustness checks use a standardised polarization outcome.
 
-**Synthetic Control** (`scm_models_polarization.R`)  
+**Synthetic Control** (`04_analysis_synthetic_control.R`)  
 Constructs a weighted synthetic Carinthia from the donor pool to estimate the
 1986 treatment effect. Inference is based on in-space placebo tests (all donor
 states as pseudo-treated units) and in-time placebo tests (fake treatment years
@@ -67,7 +67,7 @@ for Carinthia). Permutation p-values are reported.
 ## Dependencies
 
 ```r
-install.packages(c("tidyverse", "haven", "fixest", "Synth", "ggrepel", "zoo", "skimr"))
+install.packages(c("tidyverse", "haven", "fixest", "Synth", "ggrepel"))
 ```
 
 ---

@@ -21,7 +21,6 @@
 library(tidyverse)
 library(haven)
 library(fixest)
-library(skimr)
 
 
 # 1. Data Ingestion and Sample Construction
