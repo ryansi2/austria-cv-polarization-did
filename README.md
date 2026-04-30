@@ -67,7 +67,7 @@ for Carinthia). Permutation p-values are reported.
 ## Dependencies
 
 ```r
-install.packages(c("tidyverse", "haven", "fixest", "Synth", "ggrepel"))
+install.packages(c("tidyverse", "haven", "fixest", "Synth", "ggrepel", "zoo"))
 ```
 
 ---
