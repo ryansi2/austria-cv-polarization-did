@@ -78,4 +78,4 @@ Hoffman, Mitchell, Gianmarco Le´on, and Mar´ıa Lombardi. 2017. “Compulsory 
 Turnout, and Government Spending: Evidence from Austria.” Journal of Public Economics
 145 (January): 103–15. https://doi.org/10.1016/j.jpubeco.2016.10.002.
 
-Volkens, Andrea, et al. (2024). The Manifesto Data Collection. Manifesto Project (MRG/CMP/MARPOR). Version 2024a. Berlin: Wissenschaftszentrum Berlin für Sozialforschung (WZB).
+Volkens, Andrea, et al. (2024). The Manifesto Data Collection. Manifesto Project (MRG/CMP/MARPOR). Version 2025a. Berlin: Wissenschaftszentrum Berlin für Sozialforschung (WZB).
