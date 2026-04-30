@@ -25,7 +25,7 @@ library(skimr)
 
 
 # 1. Data Ingestion and Sample Construction
-PATH_DATA <- "/Users/ryansi/Downloads/Code/R/austria-cv-polarization-did/election_polarization.dta"
+PATH_DATA <- "/filepath/election_polarization.dta"
 
 UNTREATED <- c(
   "Upper Austria", "Lower Austria", "Burgenland",

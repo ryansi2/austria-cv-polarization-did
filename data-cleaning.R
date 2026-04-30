@@ -17,8 +17,8 @@ library(haven)
 
 
 # 1. Load Raw Data
-PATH_ELECTIONS <- "/Users/ryansi/Downloads/Data/1-s2.0-S0047272716301487-mmc1/Elections.dta"
-PATH_MPD       <- "/Users/ryansi/Library/CloudStorage/OneDrive-DukeUniversity/3.2/Econ 468/MPDataset_MPDS2025a_stata14.dta"
+PATH_ELECTIONS <- "/filepath/Elections.dta"
+PATH_MPD       <- "/filepath/MPDataset_MPDS2025a_stata14.dta"
 
 # Austrian state-level election results
 # Source: Hoffmann et al. (2017), Compulsory voting, turnout, and government spending: Evidence from Austria
@@ -122,4 +122,4 @@ election_polarization <- elections_merged |>
   select(year, polarization_score, ln_polarization_score, turnout, ends_with("_perc"), ends_with("_rile"), state_name, state_code, l_pop, invalid, minor, sh_winner, CV) |>
   relocate(year, state_code, state_name, polarization_score, ln_polarization_score, unemployed_perc, l_pop, minor, sh_winner, turnout, invalid, CV, oevp_perc, spoe_perc, fpoe_perc, kpoe_perc, wdu_perc, ÖVP_rile, SPÖ_rile, FPÖ_rile, KPÖ_rile, wdu_perc)
 
-haven::write_dta(election_polarization, "/Users/ryansi/Downloads/Code/R/austria-cv-polarization-did/election_polarization.dta")
+# haven::write_dta(election_polarization, "/filepath/election_polarization.dta")

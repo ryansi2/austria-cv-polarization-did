@@ -19,7 +19,7 @@ library(skimr)
 
 
 # 1. Load Data
-PATH_DATA <- "/Users/ryansi/Downloads/Code/R/austria-cv-polarization-did/election_polarization.dta"
+PATH_DATA <- "/filepath/election_polarization.dta"
 
 CARINTHIA_DONOR_POOL <- c(
   "Upper Austria", "Lower Austria", "Burgenland",
@@ -332,7 +332,6 @@ df_no_carinthia |>
 # 5c. Difference in Polarization: Treated vs. Control (1992 Repeal)
 # Plots the raw treated-minus-control gap in mean polarization by year with
 # 95% confidence intervals. A vertical line marks the 1992 repeal.
-# -----------------------------------------------------------------------------
 
 df_diff_1992 <- df_no_carinthia |>
   group_by(year, ever_treated) |>

@@ -23,7 +23,7 @@ library(ggrepel)
 # Restrict to the Carinthia donor pool and the pre-repeal period (1950–1991).
 # The treatment indicator equals 1 for Carinthia from 1986 onward.
 
-PATH_DATA <- "/Users/ryansi/Downloads/Code/R/austria-cv-polarization-did/election_polarization.dta"
+PATH_DATA <- "/filepath/election_polarization.dta"
 
 CARINTHIA_DONOR_POOL <- c(
   "Upper Austria", "Lower Austria", "Burgenland",
@@ -47,7 +47,6 @@ df_sc <- read_dta(PATH_DATA) |>
 
 
 # 2. Synthetic Control Estimation
-
 treated_id  <- df_sc |> filter(state_name == "Carinthia") |> distinct(state_id) |> pull() |> as.integer()
 control_ids <- df_sc |> filter(state_name != "Carinthia") |> distinct(state_id) |> pull() |> as.integer()
 pre_period  <- sort(unique(df_sc$year[df_sc$year < TREAT_YEAR]))
@@ -82,7 +81,6 @@ results <- data.frame(
 
 
 # 3. Raw Polarization Trajectories: Carinthia vs. Donor Pool
-
 label_data <- df_sc |>
   group_by(state_name) |>
   filter(year == max(year)) |>
@@ -127,7 +125,6 @@ df_sc |>
 
 
 # 4. Synthetic Control Path and Gap Plots
-
 path.plot(
   synth.res    = synth_out,
   dataprep.res = dataprep_out,
@@ -212,7 +209,7 @@ permutation_p <- mean(
 )
 
 
-# 7. Summary Tables
+# 6. Summary Tables
 cat("\n", strrep("=", 60), "\n")
 cat("1. Treated vs. Synthetic Outcomes by Year\n")
 cat(strrep("=", 60), "\n")
