@@ -36,11 +36,11 @@ Raw data are not hosted in this repository due to licensing restrictions.
 ## Repository Structure
 
 ```text
-├── data-cleaning.R                  # Constructs election_polarization.dta from raw sources
-├── data_vis.R                       # Descriptive figures and parallel trends diagnostics
-├── did-models-polarization.R        # Difference-in-differences estimation
-├── scm_models_polarization.R        # Synthetic control estimation and placebo tests
-├── election_polarization.dta        # Final analysis dataset (output of data-cleaning.R)
+├── 01_data_construction.R           # Constructs election_polarization.dta from raw sources
+├── 02_data_visualisation.R          # Descriptive figures and parallel trends diagnostics
+├── 03_analysis_did.R                # Difference-in-differences estimation
+├── 04_analysis_synthetic_control.R  # Synthetic control estimation and placebo tests
+├── election_polarization.dta        # Final analysis dataset (output of 01_data_construction.R)
 ├── austria-cv-polarization-did.Rproj
 └── .gitignore
 ```
@@ -78,4 +78,4 @@ Hoffman, Mitchell, Gianmarco Le´on, and Mar´ıa Lombardi. 2017. “Compulsory 
 Turnout, and Government Spending: Evidence from Austria.” Journal of Public Economics
 145 (January): 103–15. https://doi.org/10.1016/j.jpubeco.2016.10.002.
 
-Volkens, Andrea, et al. (2024). The Manifesto Data Collection. Manifesto Project (MRG/CMP/MARPOR). Version 2025a. Berlin: Wissenschaftszentrum Berlin für Sozialforschung (WZB).
+Volkens, Andrea, et al. (2025). The Manifesto Data Collection. Manifesto Project (MRG/CMP/MARPOR). Version 2025a. Berlin: Wissenschaftszentrum Berlin für Sozialforschung (WZB).
