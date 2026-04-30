@@ -1,42 +1,81 @@
-# The Causal Impact of Compulsory Voting on Political Polarization
+# The Causal Effect of Compulsory Voting on Electoral Polarization
 
-## Project Overview
-This research investigates the relationship between mandatory electoral participation and ideological polarization. Utilizing a quasi-experimental design, the project analyzes the staggered implementation and repeal of compulsory voting (CV) across Austrian states (*Länder*) to identify whether institutional participation requirements influence party rhetoric.
+## Overview
 
-The study combines high-resolution electoral data with the **Manifesto Project Database (MARPOR)** and uses the **Dalton Polarization Index** to quantify shifts in the political landscape from 1945 to the present.
+This project estimates the causal effect of compulsory voting (CV) on electoral
+polarization in Austria using sub-national policy variation across Austrian states
+(*Länder*). The analysis exploits the staggered implementation (1986) and repeal
+(1992) of CV laws to identify whether mandatory participation requirements shift
+party systems toward the ideological centre.
 
-## Key Research Questions
-* Does compulsory voting effectively "pull" parties toward the median voter?
-* Do political shocks (e.g., the 1994 EU Referendum) outweigh the moderating effects of voting laws?
-* Are the effects of CV repeal statistically significant regarding ideological dispersion?
+Polarization is measured using the **Dalton (2008) Index**, constructed from
+party-level left-right scores in the **Manifesto Project Database (MPDS2025a)**,
+weighted by state-level vote shares from Hoffmann et al. (2017).
 
 ---
 
-## Methodology & Tech Stack
-* **Causal Inference:** Difference-in-Differences (DiD) framework leveraging sub-national policy variation.
-* **Data Wrangling:** Merging administrative election results with the Manifesto Project Database using `tidyverse` and `haven`.
-* **Polarization Metrics:** Calculation of the **Dalton Index** to measure party system dispersion.
-* **Tools:** * **R:** Data cleaning, statistical modeling, and visualization (`ggplot2`, `fixest`).
-  * **Stata:** Robustness checks and handling legacy `.dta` formats.
+## Research Questions
+
+- Does compulsory voting pull parties toward the median voter?
+- Is the moderating effect of CV reversed upon repeal?
+- Are results robust to alternative estimation strategies (DiD vs. synthetic control)?
 
 ---
 
 ## Data Sources
-> **Note on Data Access:** Due to licensing restrictions, raw datasets are not hosted in this repository. 
 
-1. **Manifesto Project Database (MPDS2025a):** Party manifesto coding for Austrian national and regional elections. [Access here](https://manifesto-project.wzb.eu/).
-2. **Hoffman et al. (2017):** Turnout and government spending data for Austrian municipalities and states.
-3. **Austrian Interior Ministry:** Official historical election results at the state level.
+Raw data are not hosted in this repository due to licensing restrictions.
+
+| Source | Description |
+|---|---|
+| Hoffmann et al. (2017), *J. Public Econ.* | State-level Austrian election returns, 1949–2010 |
+| Manifesto Project Database (MPDS2025a) | Party-level RILE scores and vote shares |
 
 ---
 
 ## Repository Structure
+
 ```text
-├── data/               # (Empty/Gitignored) Directory for .dta and .csv files
-├── scripts/
-│   ├── 01_cleaning.R   # Merging MARPOR data with state election results
-│   ├── 02_analysis.R   # DiD models and Dalton Index calculations
-│   └── 03_viz.R        # Generating plots for polarization trends
-├── results/            # Regression tables and exported figures
-├── .gitignore          # Configured to ignore large data files (*.dta)
-└── README.md
+├── data-cleaning.R                  # Constructs election_polarization.dta from raw sources
+├── data_vis.R                       # Descriptive figures and parallel trends diagnostics
+├── did-models-polarization.R        # Difference-in-differences estimation
+├── scm_models_polarization.R        # Synthetic control estimation and placebo tests
+├── election_polarization.dta        # Final analysis dataset (output of data-cleaning.R)
+├── austria-cv-polarization-did.Rproj
+└── .gitignore
+```
+
+---
+
+## Methodology
+
+**Difference-in-Differences** (`did-models-polarization.R`)  
+Estimates the effect of the 1986 CV implementation in Carinthia and the 1992
+repeal in Styria, Vorarlberg, and Tyrol against never-treated donor states.
+Models vary across narrow and wide estimation windows and four fixed-effect
+structures (two-way, state-only, year-only, none). Standard errors are clustered
+at the state level. Robustness checks use a standardised polarization outcome.
+
+**Synthetic Control** (`scm_models_polarization.R`)  
+Constructs a weighted synthetic Carinthia from the donor pool to estimate the
+1986 treatment effect. Inference is based on in-space placebo tests (all donor
+states as pseudo-treated units) and in-time placebo tests (fake treatment years
+for Carinthia). Permutation p-values are reported.
+
+---
+
+## Dependencies
+
+```r
+install.packages(c("tidyverse", "haven", "fixest", "Synth", "ggrepel", "zoo", "skimr"))
+```
+
+---
+
+## Citation
+
+Hoffman, Mitchell, Gianmarco Le´on, and Mar´ıa Lombardi. 2017. “Compulsory Voting,
+Turnout, and Government Spending: Evidence from Austria.” Journal of Public Economics
+145 (January): 103–15. https://doi.org/10.1016/j.jpubeco.2016.10.002.
+
+Volkens, Andrea, et al. (2024). The Manifesto Data Collection. Manifesto Project (MRG/CMP/MARPOR). Version 2024a. Berlin: Wissenschaftszentrum Berlin für Sozialforschung (WZB).
