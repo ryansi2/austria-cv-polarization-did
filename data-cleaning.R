@@ -23,13 +23,13 @@ library(haven)
 # Austrian state-level election results
 # Source: Hoffmann et al. (2017), Compulsory voting, turnout, and government spending: Evidence from Austria
 elections_raw <- read_dta(
-  "/Users/ryansi/Downloads/Data/1-s2.0-S0047272716301487-mmc1/Elections.dta"
+  "Elections.dta"
 )
 
 # Manifesto Project Database: party positions & vote shares
 # Source: Volkens et al. (2025), MPDS2025a
 mpd_raw <- read_dta(
-  "/Users/ryansi/Library/CloudStorage/OneDrive-DukeUniversity/3.2/Econ 468/MPDataset_MPDS2025a_stata14.dta"
+  "MPDataset_MPDS2025a_stata14.dta"
 )
 
 
