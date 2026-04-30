@@ -119,7 +119,12 @@ election_polarization <- elections_merged |>
     ln_polarization_score = log(polarization_score)
   ) |>
   ungroup() |>
-  select(year, polarization_score, ln_polarization_score, turnout, ends_with("_perc"), ends_with("_rile"), state_name, state_code, l_pop, invalid, minor, sh_winner, CV) |>
-  relocate(year, state_code, state_name, polarization_score, ln_polarization_score, unemployed_perc, l_pop, minor, sh_winner, turnout, invalid, CV, oevp_perc, spoe_perc, fpoe_perc, kpoe_perc, wdu_perc, ÖVP_rile, SPÖ_rile, FPÖ_rile, KPÖ_rile, wdu_perc)
-
+  select(
+  year, state_code, state_name,
+  CV,
+  polarization_score, ln_polarization_score,
+  unemployed_perc, l_pop, turnout, sh_winner, invalid, minor,
+  oevp_perc, spoe_perc, fpoe_perc, kpoe_perc, wdu_perc,
+  ends_with("_rile")
+)
 # haven::write_dta(election_polarization, "/filepath/election_polarization.dta")
