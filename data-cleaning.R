@@ -20,17 +20,16 @@ library(haven)
 
 # 1. Load Raw Data
 
+PATH_ELECTIONS <- "/filepath/Elections.dta"
+PATH_MPD       <- "/filepath/MPDataset_MPDS2025a_stata14.dta"
+
 # Austrian state-level election results
 # Source: Hoffmann et al. (2017), Compulsory voting, turnout, and government spending: Evidence from Austria
-elections_raw <- read_dta(
-  "Elections.dta"
-)
+elections_raw <- read_dta(PATH_ELECTIONS)
 
 # Manifesto Project Database: party positions & vote shares
 # Source: Volkens et al. (2025), MPDS2025a
-mpd_raw <- read_dta(
-  "MPDataset_MPDS2025a_stata14.dta"
-)
+mpd_raw <- read_dta(PATH_MPD)
 
 
 # 2. Clean Election Results
@@ -122,4 +121,8 @@ election_polarization <- elections_merged |>
     )),
     ln_polarization_score = log(polarization_score)
   ) |>
-  ungroup()
+  ungroup() |>
+  select(year, polarization_score, ln_polarization_score, turnout, ends_with("_perc"), ends_with("_rile"), state_name, state_code, l_pop, invalid, minor, sh_winner) |>
+  relocate(year, state_code, state_name, polarization_score, ln_polarization_score, unemployed_perc, l_pop, minor, sh_winner, turnout, invalid, oevp_perc, spoe_perc, fpoe_perc, kpoe_perc, wdu_perc, ÖVP_rile, SPÖ_rile, FPÖ_rile, KPÖ_rile, wdu_perc)
+
+# haven::write_dta(election_polarization, "/filepath/election_polarization.dta")
